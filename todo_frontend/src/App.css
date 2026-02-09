@@ -1,104 +1,272 @@
-/* CSS Variables for Theme Management */
-:root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
-}
-
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
+/* App-specific styles for the Simple To‑Do app (light / modern) */
 
 .App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+.header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.brand {
+  display: grid;
+  gap: 6px;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
+.title {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
   font-size: 14px;
-  font-weight: 600;
+  line-height: 1.4;
+}
+
+.surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.formCard {
+  padding: 16px;
+  margin-top: 10px;
+}
+
+.formRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.input::placeholder {
+  color: rgba(100, 116, 139, 0.85);
+}
+
+.input:focus {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: var(--ring);
+}
+
+.btn {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease,
+    background 120ms ease, border-color 120ms ease, color 120ms ease;
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+  white-space: nowrap;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-sm);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.btnPrimary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btnPrimary:hover {
+  background: #2f74eb;
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.btnGhost:hover {
+  background: rgba(17, 24, 39, 0.04);
+}
+
+.btnDanger {
+  background: transparent;
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: none;
+}
+
+.btnDanger:hover {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.btnSuccess {
+  background: var(--success);
+  color: #fff;
+}
+
+.btnSuccess:hover {
+  background: #03a9c0;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 2px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hint {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.listCard {
+  margin-top: 16px;
+  padding: 10px;
+}
+
+.taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  background: #fff;
+}
+
+.taskTextWrap {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.taskText {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.taskCreated {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.taskActions {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.inlineEditRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+.inlineEditRow .input {
+  height: 40px;
+  border-radius: 12px;
+}
+
+.emptyState {
+  padding: 26px 14px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.emptyTitle {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.emptyText {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .page {
+    padding: 22px 14px 40px;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .taskItem {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .taskActions {
+    justify-content: flex-end;
+  }
+
+  .inlineEditRow {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
